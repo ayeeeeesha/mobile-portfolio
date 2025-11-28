@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <!-- Using Inter as a standard font, but retaining Verdana fallback as requested -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<style>
+    /* Global Styles & Reset */
+    body {
+        height: auto;
+        margin: 0;
+        padding: 0;
+        /* Retain original font preferences */
+        font-family: 'Verdana', 'Geneva', 'Tahoma', sans-serif, 'Inter';
+        background: pink;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
+    /* Headings & Text */
+    h1 {
+        color: rgb(79, 32, 114);
+        font-family: inherit;
+        /* Scaled from 100px */
+        font-size: 3rem; 
+        margin-bottom: 0.5rem;
+    }
+    p {
+        color: rgb(79, 32, 114);
+        /* Scaled from 70px */
+        font-size: 1.2rem; 
+    }
+
+    /* ================================================= */
+    /* NAVBAR-CSS - Scaled to be responsive */
+    /* ================================================= */
+    .navbar {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .logo {
+        /* Scaled from 200px */
+        font-size: 5rem; 
+        color: rgb(102, 12, 147);
+        margin-top: 1rem;
+        padding-top: 1rem;
+        /* Removed fixed margins */
+    }
+    .navbar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin-top: 2rem;
+        gap: 1rem;
+    }
+
+    /* NAVBAR-BUTTON */
+    button {
+        /* Scaled from 1750px width and 200px height */
+        height: 4.5rem; 
+        width: 12rem; 
+        border-radius: 0;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        /* Scaled from 80px */
+        font-size: 1.5rem; 
+        border: none;
+        background-color: #fff;
+        transition: background-color .4s;
+    }
+    button:hover {
+        background-color: rgb(255, 174, 187);
+    }
+    button:hover a {
+        color: rgb(95, 161, 44);
+    }
+
+    /* ================================================= */
+    /* INTRO SECTION - Responsive Flex Layout */
+    /* ================================================= */
+    .intro-section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 3rem;
+        margin-top: 4rem;
+        padding: 0 1rem;
+    }
+    .pic {
+        /* Scaled to be manageable */
+        width: 18rem; 
+        height: 18rem;
+        object-fit: cover;
+        border-radius: 4.5rem; /* Retain ratio of 90px */
+        transition: 0.3s;
+        box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.5);
+        /* Removed fixed margins */
+    }
+    .pic:hover {
+        box-shadow: 0 0.5rem 1.25rem rgba(82, 48, 48, 0.959);
+    }
+    .intro-text {
+        max-width: 600px;
+        /* Removed all fixed negative/large margins */
+    }
+    .intro-text p {
+        /* Fixed width of 2500px is now controlled by max-width */
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+    .intro-text h1:first-child {
+        font-size: 2.5rem; /* Scaled from 90px */
+    }
+    .intro-text h1:nth-child(2) {
+        font-size: 3rem; /* Scaled from 100px */
+    }
+
+    /* ICONS (Intro) */
+    .icon {
+        display: flex;
+        gap: 1.5rem; /* Scaled from 50px */
+        align-items: center;
+        margin-top: 2rem;
+        /* Removed fixed margin-right: 2780px */
+        justify-content: flex-start; /* Align left in intro-text container */
+    }
+    .icon img {
+        /* Scaled from 100px/80px */
+        width: 2.5rem; 
+        height: 2rem;
+        cursor: pointer;
+    }
+    .footer {
+        /* Scaled from 60px */
+        font-size: 1.2rem; 
+        margin-top: 1rem;
+    }
+    .cv-a:hover {
+        color: orange;
+    }
+
+    /* ================================================= */
+    /* ABOUT ME SECTION - Responsive Flex Layout */
+    /* ================================================= */
+    .about {
+        margin-top: 6rem; /* Scaled from 180px */
+        padding: 0 1rem;
+        text-align: center;
+    }
+    .about-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 3rem;
+        text-align: left;
+    }
+    .pic2 {
+        /* Scaled from 1000px */
+        width: 18rem;
+        height: 18rem;
+        object-fit: cover;
+        border-radius: 50%; /* Retain round shape */
+        transition: 0.3s;
+        box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.5);
+        /* Removed fixed margins */
+    }
+    .about-text-container {
+        max-width: 600px;
+    }
+    .about-text-container p {
+        /* Fixed width of 2500px is now controlled by max-width */
+        max-width: 100%;
+        margin-top: 0;
+    }
+    
+    /* Stats and Languages */
+    .stats {
+        display: flex; 
+        justify-content: space-around; /* Use space-around for responsive spacing */
+        gap: 1rem; /* Scaled from 600px */
+        align-items: center; 
+        margin-top: 3rem;
+        margin-right: 0; /* Removed fixed margin */
+        flex-wrap: wrap;
+    }
+    .stats h1 {
+        font-size: 3.5rem;
+    }
+    .main {
+        display: flex; 
+        justify-content: space-around; 
+        gap: 1rem; /* Scaled from 200px */
+        align-items: center; 
+        margin-right: 0; /* Removed fixed margin */
+        /* Scaled from 46px */
+        font-size: 1rem;
+        color: rgb(79, 32, 114);
+        margin-top: 0;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    .languages {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 3rem;
+        margin-left: 0 !important; /* Override inline style */
+        gap: 0.5rem;
+    }
+    .languages button {
+        /* Scaled from 400px/100px/60px */
+        height: 3rem;
+        width: auto;
+        padding: 0 1rem;
+        font-size: 1.2rem;
+        margin: 0.25rem;
+        color: rgb(79, 32, 114);
+        background-color: #fff;
+    }
+    .languages button:hover {
+        background-color: rgb(79, 32, 114);
+        color: white;
+    }
+
+    /* ================================================= */
+    /* CONTACT SECTION */
+    /* ================================================= */
+    .contact {
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+    .contact h1 {
+        margin-top: 6rem; /* Scaled from 400px */
+        /* Scaled from 130px */
+        font-size: 4rem; 
+    }
+    .contact-text {
+        /* Scaled from 70px */
+        font-size: 1.5rem; 
+        color: #555;
+        margin-bottom: 2rem;
+    }
+    .contact-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem; /* Scaled from 90px */
+    }
+    .contact-card {
+        background: #fff;
+        margin-top: 1.5rem;
+        /* Scaled from 800px width and 500px height */
+        width: 100%;
+        max-width: 20rem; 
+        height: auto;
+        min-height: 15rem;
+        padding: 1.5rem;
+        border-radius: 0.75rem; 
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        margin-bottom: 3rem;
+    }
+    .contact-card:hover {
+        box-shadow: 0 8px 20px rgba(255, 208, 208, 0.959);
+    }
+    .contact-card i {
+        margin-top: 1rem;
+        /* Scaled from 80px */
+        font-size: 2.5rem; 
+        margin-bottom: 0.5rem;
+        color: #ff6fa3;
+    }
+    .contact-card h3 {
+        /* Scaled from 90px */
+        font-size: 2rem; 
+        margin-bottom: 0.25rem;
+        color: rgb(79, 32, 114);
+    }
+    .contact-card p {
+        /* Scaled from 53px */
+        font-size: 1.1rem; 
+        color: #555;
+    }
+
+    /* Media Queries for smaller screens */
+    @media (max-width: 768px) {
+        .logo {
+            font-size: 3rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        .intro-section {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .intro-text {
+            max-width: 100%;
+            text-align: center;
+        }
+        .icon {
+            justify-content: center; /* Center icons on mobile */
+        }
+        .about-content {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .about-text-container {
+             text-align: center;
+        }
+        .stats, .main {
+            justify-content: space-between;
+            padding: 0 0.5rem;
+            text-align: center;
+        }
+        .stats h1 {
+            font-size: 2.5rem;
+        }
+    }
+</style>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <a href="#" class="logo">Portfolio</a>
+            <ul>
+                <li><button><a href="index.html">About me</a></button></li>
+                <li><button><a href="web2.html">Projects</a></button></li>
+                <li><button><a href="index.html">Contacts</a></button></li>
+            </ul>
+        </nav>
+        
+        <!-- INTRO-SECTION -->
+        <div class="intro-section">
+            <!-- Image on left, text/icons on right on desktop, stacked on mobile -->
+            <img class="pic" src="pics/pic.jpeg" alt="my image" onerror="this.onerror=null; this.src='https://placehold.co/300x300/fec8d8/6b177a?text=Profile+Pic'">
+            
+            <div class="intro-text">
+                <h1 style="font-size: 1.9rem;">I'm Ayesha Ramzan 👋</h1>
+                <h1>Tech Enthusiast | Builder | Explorer</h1>
+
+                <p>
+                    🌷 I am a BSCS student passionate about technology, creativity, and building meaningful digital experiences. I love learning new skills, solving problems, and improving my work step by step. My portfolio reflects my journey as a learner, coder, and future developer. 🌷
+                </p>
+
+                <div class="icon">
+                    <!-- Note: Placeholder image URLs used -->
+                    <a href="https://pk.linkedin.com/company/kinnaird-college-for-women" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="linkedin"></a>
+                    <a href="https://www.instagram.com/kinnairdofficial/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="instagram"></a>
+                    <a href="https://www.youtube.com/@kinnairdofficial"> <img src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="youtube" target="_blank"></a>
+                </div>
+
+                <main class="footer">
+                    <b><p style="color: green;">Click <a class="cv-a" href="cv.pdf" target="_blank">here</a> to download my CV. </a></p> </b>
+                </main>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <h1>About Me</h1><hr>
+            
+            <div class="about-content">
+                <img class="pic2" src="pics/download (4).jpeg" alt="my image" onerror="this.onerror=null; this.src='https://placehold.co/300x300/fec8d8/6b177a?text=About+Pic'">
+
+                <div class="about-text-container">
+                    <p>A passionate CS student and aspiring developer with a love for coding, problem-solving, 
+                    and creativity. I enjoy building projects that combine technology with design, exploring 
+                    new tools, and continuously learning to improve my skills. I believe in turning ideas 
+                    into real solutions.<br><br>When I’m not coding, you’ll find me exploring programming, collecting 
+                    memories, or experimenting with small projects to enhance my skills.</p>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <h1>03+</h1>
+                <h1>05+</h1>
+                <h1>03+</h1>
+            </div>
+            <div class="main">
+                <h2>Years of Experience</h2>
+                <h2>Projects Completed</h2> 
+                <h2>Languages Known</h2>  
+            </div>  
+
+            <!-- Languages -->
+            <div class="languages">
+                <button style="width: 10rem;">🗣️Languages:</button>
+                <button>English </button>
+                <button>Urdu</button>
+                <button>Spanish</button>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact">
+            <h1>Contact Me</h1><hr>
+            <p class="contact-text">Feel free to reach out anytime 💌</p>
+
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p><a href="tel:+923094876767">+92 309 4876767</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p><a href="mailto:ayesharamzan889@gmail.com">ayesharamzan889.com</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fa-brands fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <p><a href="https://instagram.com/ayesha.ov" target="_blank">ayesha.ov</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

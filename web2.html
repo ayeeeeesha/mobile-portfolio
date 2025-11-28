@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About me - Responsive Portfolio</title>
+    <!-- Using Inter as a standard font, but retaining Verdana fallback as requested -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+</head>
+<style>
+    /* Reset and base styles */
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: pink;
+        /* Using Inter as a clean base, with user's preferred font family as fallback */
+        font-family: 'Verdana', 'Geneva', 'Tahoma', 'sans-serif', 'Inter';
+        color: #333; /* Default text color for contrast */
+        line-height: 1.6;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit; /* Inherit color from parent */
+    }
+
+    /* Layout Container for centering */
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    /* ================================================= */
+    /* Navbar Styles - Scaled down from massive px values */
+    /* ================================================= */
+
+    .navbar {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column; /* Stack on mobile */
+        align-items: center;
+        text-align: center;
+    }
+    
+    .logo {
+        /* Scaled from 200px to a large, but manageable size */
+        font-size: 5rem; 
+        color: rgb(102, 12, 147);
+        margin-top: 1rem;
+        padding-top: 1rem;
+        /* Removed fixed margin-left: 2350px */
+    }
+
+    .navbar ul {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping on small screens */
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin-top: 2rem;
+        gap: 1rem;
+    }
+
+    button {
+        /* Scaled from 1750px width and 200px height */
+        height: 4.5rem; 
+        width: 12rem; 
+        border-radius: 0;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        /* Scaled from 80px */
+        font-size: 1.5rem; 
+        border: none;
+        background-color: #fff;
+        transition: background-color .4s;
+    }
+    
+    button a {
+        display: block;
+        padding: 0.5rem;
+    }
+
+    button:hover {
+        background-color: rgb(255, 174, 187);
+    }
+    button:hover a {
+        color: rgb(95, 161, 44);
+    }
+
+    /* Headings */
+    h1 {
+        text-align: center;
+        /* Scaled from 90px */
+        font-size: 4rem; 
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Poster text */
+    .poster {
+        text-align: center;
+        /* Scaled from 80px */
+        font-size: 2rem; 
+        margin: 4rem auto 2rem;
+        max-width: 90%;
+    }
+
+    /* ================================================= */
+    /* Projects Section - Responsive Grid/Flex */
+    /* ================================================= */
+
+    .pics-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem; /* Scaled from 200px */
+        margin-top: 2rem;
+    }
+
+    .pics-row img {
+        /* Scaled from 1100px width */
+        width: 100%; 
+        max-width: 20rem; 
+        height: auto;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+
+    .text-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem; /* Scaled from 400px */
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+    }
+
+    .text-row p {
+        /* Scaled from 80px font size */
+        font-size: 1.2rem; 
+        text-align: center;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+        max-width: 20rem; /* Match image max width */
+    }
+
+    /* Canva/Biz Posters (Using flex for layout) */
+    .canva, .biz {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.3rem; /* Scaled from 400px/200px */
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        /* Removed all fixed margin-left/width/height */
+    }
+
+    .canva img, .biz img {
+        max-width: 20%;
+        width: 38rem; /* Set a consistent size */
+        height: auto;
+        height: 20rem;
+        border-radius: 0.5rem;
+    }
+    .ai3 {
+        width: 18rem; /* Consistent size */
+    }
+
+    /* ================================================= */
+    /* Education + Skills Section */
+    /* ================================================= */
+
+    .edu-skill-section {
+        display: flex;
+        flex-wrap: wrap; /* Essential for mobile responsiveness */
+        justify-content: center;
+        gap: 2rem; /* Scaled from 200px */
+        padding: 2rem 0;
+    }
+
+    .education-box, .skills-box {
+        /* Scaled from 4000px width to responsive width */
+        width: 100%;
+        max-width: 600px;
+        padding: 2rem; /* Scaled from 90px */
+        background: #ffdddd;
+        border-radius: 0.75rem; /* Scaled from 18px */
+        box-shadow: 0px 0.25rem 0.75rem rgba(0,0,0,0.1);
+        margin: 1rem 0;
+    }
+    
+    .education-box h1, .skills-box h1 {
+        /* Scaled from 80px */
+        font-size: 2.5rem; 
+        margin-top: 0.5rem;
+        color: rgb(102, 12, 147);
+    }
+    
+    .edu-item {
+        /* Scaled from 46px font size */
+        font-size: 1.1rem; 
+        margin-top: 1.5rem;
+        margin-left: 0; /* Removed fixed margin-left: 300px */
+    }
+    .edu-item h2 {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .skills-box {
+        /* Scaled from 50px font size */
+        font-size: 1.2rem; 
+    }
+
+    /* Skill lists */
+    .skills-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+    .hard, .soft {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .hard h2, .soft h2 {
+        font-size: 1.8rem;
+        color: rgb(102, 12, 147);
+        margin-bottom: 0.5rem;
+    }
+
+    .hard p, .soft p {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #ffebeb;
+        line-height: 1.5;
+    }
+
+    .stars {
+        /* Scaled from 70px */
+        font-size: 1.5rem; 
+        color: #ff9ac6;
+        letter-spacing: 0.1rem;
+    }
+
+    /* ================================================= */
+    /* Experience Section */
+    /* ================================================= */
+
+    .experience {
+        margin-top: 4rem;
+        text-align: center;
+        padding: 2rem 0;
+        color: rgb(102, 12, 147);
+    }
+    .experience h1 {
+        /* Scaled from 100px */
+        font-size: 3rem; 
+    }
+
+    .experience-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem; /* Scaled from 25px */
+        margin-top: 2rem;
+    }
+
+    .exp-box {
+        /* Scaled from 1100px width and 900px height */
+        width: 100%;
+        max-width: 20rem; 
+        height: auto;
+        min-height: 25rem;
+        background: #ffdddd;
+        padding: 1.5rem; /* Scaled from 90px */
+        border-radius: 0.75rem; 
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        text-align: left;
+        transition: 0.3s;
+    }
+
+    .exp-box:hover {
+        transform: translateY(-0.5rem);
+        background-color: rgb(252, 197, 197);
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        color: rgb(255, 255, 255);
+    }
+
+    .exp-box h2 {
+        /* Scaled from 80px */
+        font-size: 1.8rem; 
+        margin-bottom: 0.5rem;
+        color: rgb(102, 12, 147);
+    }
+    .exp-box:hover h2 {
+        color: rgb(255, 255, 255);
+    }
+
+    .exp-box p {
+        margin-top: 1rem; /* Scaled from 80px */
+        /* Scaled from 60px */
+        font-size: 1.1rem; 
+        line-height: 1.6;
+    }
+    
+    /* Image Hover Effect (Kept as is, but applied to image containers) */
+    .hover-img {
+        border-radius: 0.5rem;
+        transition: all 0.3s ease; 
+        display: block; /* Important for transforming */
+    }
+    .hover-img:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); 
+        transform: translateY(-0.3rem); 
+    }
+
+    /* Icons (Footer) */
+    .icon {
+        width: 100%;
+        background-color: #ffffff; 
+        padding: 1.5rem 0; 
+        display: flex;
+        justify-content: center; 
+        gap: 2rem; /* Added gap for spacing */
+        margin-top: 4rem;
+    }
+    .icon img {
+        /* Scaled from 200px */
+        width: 3rem; 
+        height: 3rem;
+        cursor: pointer;
+        transition: transform 0.3s;
+        /* Removed all fixed margins */
+    }
+    .icon img:hover {
+        transform: scale(1.1);
+    }
+
+    /* Media Queries for smaller screens */
+    @media (max-width: 768px) {
+        .logo {
+            font-size: 3rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        button {
+            width: 8rem;
+            font-size: 1.2rem;
+        }
+        .edu-skill-section {
+            padding: 1rem;
+        }
+        .education-box, .skills-box {
+            max-width: 100%;
+        }
+        .experience-row {
+            gap: 1rem;
+        }
+        .exp-box {
+            max-width: 100%;
+        }
+    }
+    .video{
+        /* height: 90rem;s */
+        width: 60rem;
+        
+    }
+</style>
+<body>
+    <div class="container">
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar">
+            <a href="#" class="logo">Portfolio</a>
+            <ul>
+                <li><button><a href="index.html">About me</a></button></li>
+                <li><button><a href="web2.html">Projects</a></button></li>
+                <li><button><a href="index.html">Contacts</a></button></li>
+            </ul>
+        </nav>
+
+        <!-- ===== EDUCATION + SKILLS SECTION (SIDE BY SIDE) ===== -->
+        <section class="edu-skill-section">
+            <!-- LEFT SIDE: EDUCATION -->
+            <div class="education-box">
+                <h1>Education</h1>
+                <hr><br>
+
+                <div class="edu-item">
+                    <p>⦾ 2025 - Ongoing</p>
+                    <h2>BS Computer Science</h2>
+                    <p>Kinnaird College for Women University</p>
+                </div><br>
+
+                <div class="edu-item">
+                    <p>⦾ 2023 - 2025</p>
+                    <h2>Intermediate (ICS)</h2>
+                    <p>Punjab Group of Colleges</p>
+                </div><br>
+
+                <div class="edu-item">
+                    <p>⦾ 2021 - 2023</p>
+                    <h2>Matriculation (Science)</h2>
+                    <p>Hajveri Lyceum High School</p>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE: SKILLS WITH RATING -->
+            <div class="skills-box">
+                <h1>Skills</h1>
+                <hr><br>
+                <div class="skills-content">
+                    <main class="hard">
+                        <h2>Hard Skills</h2>
+                        <p>Programming <span class="stars">★★★★☆</span></p>
+                        <p>MS Office <span class="stars">★★★★★</span></p>
+                        <p>Canva <span class="stars">★★★★★</span></p>
+                        <p>Graphic Design <span class="stars">★★★★☆</span></p>
+                        <p>Artistic Skills <span class="stars">★★★☆☆</span></p>
+                        <p>Content Creation <span class="stars">★★★★☆</span></p>
+                    </main>
+                    
+                    <main class="soft">
+                        <h2>Soft Skills</h2>
+                        <!-- Re-mapping stars to display next to the skill item -->
+                        <p>Organized <span class="stars">★★★★★</span></p>
+                        <p>Creativity <span class="stars">★★★★★</span></p>
+                        <p>Leadership <span class="stars">★★★★☆</span></p>
+                        <p>Trustworthy <span class="stars">★★★★★</span></p>
+                        <p>Teamwork <span class="stars">★★★★☆</span></p>
+                        <p>Discipline <span class="stars">★★★★★</span></p>
+                    </main>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== EXPERIENCE SECTION BELOW ===== -->
+        <section class="experience">
+            <h1>Experience</h1>
+            <hr><br><br>
+
+            <div class="experience-row">
+                <div class="exp-box">
+                    <h2>CLASS REPRESENTATIVE</h2>
+                    <p>Hajveri Lyceum High School (2019–2022)<br><br>
+                    Managed discipline, helped teachers, organized activities.</p>
+                </div>
+
+                <div class="exp-box">
+                    <h2>CREATIVE WORK</h2>
+                    <p>Hajveri Lyceum High School (2021–2023)<br><br>
+                    Designed charts, visuals and educational diagrams.</p>
+                </div>
+
+                <div class="exp-box">
+                    <h2>SOCIAL MEDIA DESIGNER</h2>
+                    <p>We-Eaglefire (2022–2023)<br><br>
+                    Designed posters, reels, managed social media.</p>
+                </div>
+
+                <div class="exp-box">
+                    <h2>LOCAL SOAP DESIGNER</h2>
+                    <p>Creative Designer (2023–2024)<br><br>
+                    Made visuals for product promotion & branding.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===== PROJECTS ===== -->
+        <h1 style="color: rgb(79, 32, 114); margin-top: 4rem;">Projects</h1>
+        <hr>
+        <h1 style="color: rgb(79, 32, 114); font-size: 3rem;">Scratch Projects</h1>
+        
+        <div class="pics-row">
+            <!-- Placeholders used since actual image URLs aren't provided -->
+            <img src="pics/game.png" alt="Chicken Run Game" class="hover-img">
+            <img src="pics/game2.png" alt="Shark Game" class="hover-img">
+            <img src="pics/game3.png" alt="Musical Instrument Game" class="hover-img">
+            <img src="pics/scratch5.png" alt="Football Game" class="hover-img">
+        </div>
+        <div class="text-row">
+            <p>Made chicken run game in my first semester</p>
+            <p>Fun Shark game as scratch project</p>
+            <p>Musical Instrument game in scratch</p>
+            <p>Football game in scratch</p>
+        </div>
+
+        <h1 class="text" style="color: rgb(79, 32, 114); margin-top: 4rem;">Canva projects</h1>
+        <hr>
+        <p class="poster">1. Ai - Human Posters</p>
+        <div class="canva">
+            <img src="pics/ai human poster.jpg" alt="Ai-Human Poster" class="hover-img">
+            <img src="pics/aihuman 2.jpg" alt="Poster" class="hover-img">
+            <img class="ai3" src="pics/ai human 3.jpg" alt="poster" class="hover-img">
+        </div>
+
+        <p class="poster" style="margin-top: 3rem;">2. Business Posters</p>
+        <div class="biz">
+            <img src="pics/biz1.jpg" alt="Poster" class="hover-img">
+            <img src="pics/biz2.jpg" alt="poster" class="hover-img">
+            <img src="pics/biz3.jpg" alt="poster" class="hover-img">
+            <img src="pics/biz4.jpg" alt="poster" class="hover-img">
+        </div>
+
+        <h1 style="margin-top: 3rem; color: rgb(79, 32, 114);">ATM SYSTEM</h1>
+        <div class="video">
+            <img src="pics/atm.png" alt="ATM System Screenshot" class="hover-img" style="max-width: 90%;">
+        </div>
+        <br>
+        
+        <!-- ===== ICONS/FOOTER ===== -->
+        <div class="icon">
+            <!-- Note: Using placeholder image URLs for icons since the original URLs were not provided -->
+            <a href="https://pk.linkedin.com/company/kinnaird-college-for-women" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="linkedin">
+            </a>
+            <a href="https://www.instagram.com/kinnairdofficial/" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="instagram">
+            </a>
+            <a href="https://www.youtube.com/@kinnairdofficial" target="_blank"> 
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174883.png" alt="youtube">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
